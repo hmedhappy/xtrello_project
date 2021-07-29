@@ -1,0 +1,15 @@
+#import "./Services/Users/Types.graphql"
+#import "./Services/Tasks/Types.graphql"
+
+
+type Query {
+    Login (data :LoginVars) : User
+    getTasks : [Task]
+}
+
+type Mutation {
+     Register (data : RegisterVars) : User
+     addTask (data : TaskVars) : Task
+}
+
+

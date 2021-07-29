@@ -1,0 +1,11 @@
+.stat-card {
+    height: 8px;
+    width: 55px;
+    background-color: #1ad698;
+    margin: 1px;
+    border-radius: 5px;
+  }
+
+  .list-items::-webkit-scrollbar {
+    display: none;
+  }

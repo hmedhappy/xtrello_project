@@ -1,0 +1,17 @@
+input LoginVars {
+    username: String
+    password : String
+}
+
+input RegisterVars {
+    username: String
+    password : String
+    date_naissance :String
+}
+
+type User {
+    _id : ID
+    username : String 
+    password : String
+    date_naissance : String
+}

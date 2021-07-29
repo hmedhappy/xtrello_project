@@ -1,0 +1,100 @@
+.btn-log{
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;  
+   }
+   .btn-log:hover{
+    background-color: white;
+    color:black ;
+    border: 2px solid black;
+
+   }
+
+   .logg:hover{
+     border:1px solid #e83d31;
+     background-color: transparent;
+     padding: 4px;
+   }
+
+   @media only screen and (max-width: 1200px){
+    .welcome-logo{
+      zoom: 0.5;
+     }
+}
+@media only screen and (max-width: 600px){
+  .welcome-logo{
+    zoom: 0.4;
+    height: 46vh;
+
+   }
+   .welcome-logo > img {
+    object-fit: cover;
+    width: 334vw;
+    height: 167Vh;
+   }
+   .sign-container{
+    margin: inherit !important;
+   }
+   .sign-button{
+    bottom: unset !important;
+   }
+   .welcome{
+     flex-direction : column ;
+   }
+}
+@media only screen and (max-width: 425px){
+  .welcome-logo{
+    zoom: 0.3;
+    height: 46vh;
+   }
+   .welcome-logo > img {
+    object-fit: cover;
+    width: 334vw;
+    height: 167Vh;
+   }
+   .sign-button{
+    bottom: unset !important;
+   }
+   .sign-container{
+    margin: inherit !important;
+   }
+   .welcome{
+    flex-direction : column ;
+  }
+}
+
+.welcome-logo{
+    flex:0.5;
+    display: grid;
+    place-content: center;
+    background-color: #F1C98A ;
+}
+.welcome-logo > img {
+  object-fit: cover;
+    width: 50vw;
+    height: 100vh;
+}
+.welcome{
+    height:100vh;
+    display:flex;
+}
+
+.sign-button{
+    position:absolute;
+    right:35px;
+    bottom:30px;
+    background:transparent;
+    border: 1px solid #e83d31;
+    color: #e83d31;
+    border-radius:15px;
+    font-size:15px;
+    padding:5px;
+}
+
+.sign-container{
+    flex:0.5;
+    margin:auto;
+}

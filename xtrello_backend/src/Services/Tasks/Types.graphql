@@ -1,0 +1,27 @@
+
+
+input TaskVars {
+   title:  String
+   theme:  String
+   photo:  String
+  contenu: String
+  status: String
+  date_creation: String
+  date_viewed : String
+  creator: String
+}
+
+
+
+
+type Task {
+    _id : ID
+title:  String
+theme:  String
+photo:  String
+  contenu: String
+  status: String
+  date_creation: String
+  date_viewed : String
+  creator: String
+}
