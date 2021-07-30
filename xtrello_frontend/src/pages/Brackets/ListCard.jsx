@@ -9,19 +9,13 @@ export default function ListCard({
   setrefresh,
 }) {
   const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <>
       <button
         type='button'
-        class='add-card-btn btn list-title'
+        className='add-card-btn btn list-title'
         onClick={handleOpen}>
         Add a cardd
       </button>

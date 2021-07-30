@@ -5,6 +5,7 @@ import ProcessTask from './ProcessTask';
 import CompletedTask from './CompletedTask';
 
 import './styles/dashboard.css';
+import './styles/Task.css';
 
 export default function Index({tasks, settasks}) {
 

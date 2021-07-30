@@ -23,12 +23,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Addmodal({
-  theme="",
+  theme = "",
   settasks,
-  newTheme=false,
+  newTheme = false,
   open,
   handleClose,
-}) {
+})
+{
   const classes = useStyles();
 
   const [themee, setthemee] = useState(theme)
@@ -39,37 +40,42 @@ export default function Addmodal({
     JSON.parse(localStorage.getItem('auth'))
   );
 
-  useEffect(() => {
-     if (data?.addTask?._id) {
-         notify('Task ajouté avec succes',1);
-        settasks(old=>[...old,{
-          title,
-          theme:themee,
-          photo:'',
-         contenu,
-         status: 'loading',
-         date_creation: `${new Date()}`,
-         date_viewed : "",
-         creator: user?._id}])
-    
-
-        //  settasks()
-        handleClose()
-     }
-     //eslint-disable-next-line
-  }, [data,settasks])
-
-
-  const addTaskFunction = () => {
-    addTask({variables:{data:{
+  useEffect(() =>
+  {
+    if (data?.addTask?._id) {
+      notify('Task ajouté avec succes', 1);
+      settasks(old => [...old, {
         title,
-        theme:themee,
-        photo:'',
-       contenu,
-       status: 'loading',
-       date_creation: `${new Date()}`,
-       date_viewed : "",
-       creator: user?._id}}})
+        theme: themee,
+        photo: '',
+        contenu,
+        status: 'loading',
+        date_creation: `${ new Date() }`,
+        date_viewed: "",
+        creator: user?._id
+      }])
+      handleClose()
+    }
+    //eslint-disable-next-line
+  }, [data, settasks])
+
+
+  const addTaskFunction = () =>
+  {
+    addTask({
+      variables: {
+        data: {
+          title,
+          theme: themee,
+          photo: '',
+          contenu,
+          status: 'loading',
+          date_creation: `${ new Date() }`,
+          date_viewed: "",
+          creator: user?._id
+        }
+      }
+    })
   }
 
 
@@ -84,15 +90,10 @@ export default function Addmodal({
           onClose={handleClose}
           closeAfterTransition
           BackdropComponent={Backdrop}
-          BackdropProps={{
-            timeout: 500,
-          }}>
+          BackdropProps={{timeout: 500,}}>
           <Fade in={open}>
-            <div
-              className={
-                classes.paper + 'container modall'
-              }>
-              <form onSubmit={(e)=>{e.preventDefault();addTaskFunction()}} >
+            <div className={classes.paper + 'container modall'}>
+              <form onSubmit={(e) => { e.preventDefault(); addTaskFunction() }} >
                 <div className='form-group'>
                   <label htmlFor='exampleInputEmail1'>
                     Theme
@@ -104,13 +105,10 @@ export default function Addmodal({
                     aria-describedby='emailHelp'
                     placeholder='Enter emaill'
                     value={themee}
-                    onChange={({target:{value}})=>{
+                    onChange={({ target: { value } }) =>{
                       if (newTheme) {
-                      setthemee(value)
-                    } 
-                  }}
-
-                  />
+                        setthemee(value)
+                      }}}/>
                 </div>
                 <div className='form-group'>
                   <label htmlFor='exampleInputPassword1'>
@@ -122,7 +120,7 @@ export default function Addmodal({
                     id='exampleInputPassword1'
                     placeholder='title'
                     value={title}
-                    onChange={({target:{value}})=>settitle(value)}
+                    onChange={({ target: { value } }) => settitle(value)}
                     required
                   />
                 </div>
@@ -137,33 +135,20 @@ export default function Addmodal({
                     id='exampleInputPassword1'
                     placeholder='contenu'
                     value={contenu}
-                    onChange={({target:{value}})=>setcontenu(value)}
+                    onChange={({ target: { value } }) => setcontenu(value)}
                     required
                   />
                 </div>
                 <button
                   type='submit'
                   className='btn btn-primary'>
-                  Ajouter <i style={{fontSize:"15px",marginLeft:"5px"}} className="fas fa-plus"></i>
+                  Ajouter <i style={{ fontSize: "15px", marginLeft: "5px" }} className="fas fa-plus"></i>
                 </button>
               </form>
             </div>
           </Fade>
         </Modal>
       </div>
-      <style jsx>
-        {`
-          .modall {
-            width: 25rem;
-            height: 25rem;
-            background-color: white;
-            margin: 0;
-            border-radius: 10px;
-            margin-left: -36px;
-            padding: 12px;
-          }
-        `}
-      </style>
     </>
   );
 }

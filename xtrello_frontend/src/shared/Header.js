@@ -115,42 +115,12 @@ export default function Header() {
             <Link className="nav-link d-flex align-items-center" to="#" >
             <img onClick={()=>setToggle(!toggle)} alt='userAvatar' src="http://s.gravatar.com/avatar/fe2fd4c489e52f7c243cbf4242203d53?s=80&amp;r=g&amp;s=60" style={{borderRadius:'50%',width:"35px",marginTop:'0'}}/>
             <div className="logB" style={toggle ? {marginRight:'-32px'}:{marginRight:"-95px"}}>
-            <i class="fas fa-power-off" onClick={()=>logout(history)}>Logout</i>
+            <i className="fas fa-power-off" onClick={()=>logout(history)}>Logout</i>
             </div>
             </Link>
            </li>   
         </ul>
       </nav>
-      {/* /.navbar */}
-
-      <style jsx>
-
-        {`
-
-        .logB{
-          transition: all 0.5s ease 0s;
-    margin-left: 18px;
-    overflow: hidden;
-    background-color: rgb(231, 49, 36);
-    color: white;
-    border-radius: 30% 0% 0% 30%;
-    padding: 5px;
-        }
-      
-      @media only screen and (max-width: 600px){
-         .hideXs{
-          display:none !important;
-      }
-      }
-     
-      .no-extra-margin{
-        padding: 0;
-        margin: 0;
-        display: grid;
-        place-content: center;
-      }
-        `}
-      </style>
     </>
   )
 }

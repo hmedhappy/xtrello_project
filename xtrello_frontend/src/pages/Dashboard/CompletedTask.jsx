@@ -3,18 +3,18 @@ import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import CardAvatar from '../Brackets/CardAvatar';
 import TextTask from './TextTask';
 
-export default function NewTasks({ list }) {
+export default function NewTasks({ list })
+{
+  const scrollFunction = (e) =>
+  {
+    var item = document.querySelector(`.${ list?._id }-completed`)
+    if (e.deltaY > 0) item.scrollLeft += 100;
+    else item.scrollLeft -= 100;
+  }
   return (
     <>
-      <div
-        style={{
-          background: '#fff',
-          padding: '17px 5px 0px 26px',
-          display: 'flex',
-          justifyContent: 'space-between',
-        }}>
-        <h3
-          style={{ fontWeight: 'bolder', color: 'black' }}>
+      <div className='main-Task'>
+        <h3 >
           Completed <span>({list?.length})</span>
         </h3>
         <div className='d-flex justify-content-between align-items-center '>
@@ -23,8 +23,8 @@ export default function NewTasks({ list }) {
               ...new Array(
                 Math.floor(Math.random() * 30 + 5)
               ),
-            ].map((e) => (
-              <CardAvatar />
+            ].map((e,index) => (
+              <CardAvatar key={index} />
             ))}
           </AvatarGroup>
           <h5 className='m-3' style={{ cursor: 'pointer' }}>
@@ -32,13 +32,9 @@ export default function NewTasks({ list }) {
           </h5>
         </div>
       </div>
-      <div className={`card-slidee ${list?._id}-completed`} onWheel={(e)=>{
-         var item = document.querySelector(`.${list?._id}-completed`)
-         if (e.deltaY > 0) item.scrollLeft += 100;
-         else item.scrollLeft -= 100;
-       }}  >
-        {list?.map((e) => (
-          <TextTask data={e} />
+      <div className={`card-slidee ${ list?._id }-completed`} onWheel={(e) => scrollFunction(e)}  >
+        {list?.map((e,index) => (
+          <TextTask key={index} data={e} />
         ))}
       </div>
     </>

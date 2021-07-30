@@ -1,4 +1,4 @@
-document.querySelectorAll('.sidebar-submenu').forEach(e => {
+/* document.querySelectorAll('.sidebar-submenu').forEach(e => {
     e.querySelector('.sidebar-menu-dropdown').onclick = (event) => {
         event.preventDefault()
         e.querySelector('.sidebar-menu-dropdown .dropdown-icon').classList.toggle('active')
@@ -88,4 +88,4 @@ document.querySelector('#mobile-toggle').onclick = () => {
 document.querySelector('#sidebar-close').onclick = () => {
     sidebar.classList.toggle('active')
     overlay.classList.toggle('active')
-}
+} */

@@ -1,0 +1,11 @@
+.main-Task{
+    background: #fff; 
+    padding: 17px 5px 0px 26px; 
+    display: flex;
+    justify-content: space-between
+}
+
+.main-Task > h3 {
+    font-weight: bolder; 
+    color: black;
+}

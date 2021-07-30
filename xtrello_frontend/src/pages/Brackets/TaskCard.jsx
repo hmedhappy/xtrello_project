@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import CardAvatar from './CardAvatar';
+import { capitalCase } from 'change-case';
 
 export default function TaskCard({ img = true, data }) {
   const [ramdom] = useState(
@@ -9,7 +10,6 @@ export default function TaskCard({ img = true, data }) {
   const [ramdomPhotos] = useState(
     Math.floor(Math.random() * 50 + 1)
   );
-  const [ramsomText, setramsomText] = useState('');
   const [toggle, settoggle] = useState(false);
   var colors = [
     '#4339F2',
@@ -18,14 +18,6 @@ export default function TaskCard({ img = true, data }) {
     '#1AD698',
     '#F8BD1C',
   ];
-  useEffect(() => {
-    fetch(
-      'https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1'
-    )
-      .then((response) => response.json())
-      .then((data) => setramsomText(data[0]));
-  }, []);
-
   function pickColor() {
     const color =
       colors[Math.floor(Math.random() * colors.length - 1)];
@@ -35,15 +27,7 @@ export default function TaskCard({ img = true, data }) {
   return (
     <>
       <li
-        className={`${toggle ? 'ss container' : ''}`}
-        onClick={() => settoggle(!toggle)}>
-        <style jsx>
-          {`
-            .ss {
-              zoom: 1.3;
-            }
-          `}
-        </style>
+        className={`${toggle ? 'ss container' : ''}`} onClick={() => settoggle(!toggle)}>
         <div className='card-headerr'>
           {Math.random() > 0.6 && img ? (
             <img
@@ -64,21 +48,12 @@ export default function TaskCard({ img = true, data }) {
                   Math.random() * (colors?.length - 1)
                 )
               ),
-            ].map((e) => (
-              <div
-                className='stat-card'
-                style={{
-                  backgroundColor: `${pickColor()}`,
-                }}></div>
+            ].map((e,index) => (
+              <div key={index} className='stat-card' style={{backgroundColor: `${pickColor()}`}}></div>
             ))}
           </div>
           {data?.status === 'loading' ? (
-            <i
-              className='fas fa-spinner'
-              style={{
-                position: 'relative',
-                left: '21rem',
-              }}></i>
+            <i className='fas fa-spinner' style={{ position: 'relative',left: '21rem'}}></i>
           ) : (
             <i
               className='far fa-check-circle'
@@ -94,17 +69,17 @@ export default function TaskCard({ img = true, data }) {
         </div>
         <div className='card-bodyy'>
           <p>
-            <b>{data?.title}</b>
+            <b>{capitalCase(data?.title)}</b>
           </p>
           <h6 style={{ minHeight: '40px' }}>
-            {data?.contenu || ramsomText}
+            {data?.contenu || "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum quisquam eius"}
           </h6>
         </div>
         <div className='card-footerr d-flex justify-content-between align-items-center'>
           <div>
             <AvatarGroup max={4} spacing={'small'}>
-              {[...new Array(ramdom)].map((e) => (
-                <CardAvatar />
+              {[...new Array(ramdom)].map((e,index) => (
+                <CardAvatar key={index} />
               ))}
             </AvatarGroup>
           </div>

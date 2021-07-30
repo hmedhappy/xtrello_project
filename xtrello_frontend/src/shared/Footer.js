@@ -6,9 +6,9 @@ export default function Footer() {
   const year = today.getFullYear();
 
   return (
-      <div>
+      <div className="app-footer">
           {/* Main Footer */}
-          <footer className="main-footer" style={{position:'fixed',bottom:'0',width:'100%'}}>
+          <footer className="main-footer" style={{bottom:'0',width:'100%'}}>
               <strong>Copyright © {year} <a href="https://www.facebook.com/ahmed.jackson.180/" target="_blanc">Ahmed Ferah</a>. </strong>
                 All rights reserved.
               <div className="float-right d-none d-sm-inline-block">

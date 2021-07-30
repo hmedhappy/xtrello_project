@@ -38,6 +38,29 @@
 }
  */
 
+ .logB{
+  transition: all 0.5s ease 0s;
+margin-left: 18px;
+overflow: hidden;
+background-color: rgb(231, 49, 36);
+color: white;
+border-radius: 30% 0% 0% 30%;
+padding: 5px;
+}
+
+@media only screen and (max-width: 600px){
+ .hideXs{
+  display:none !important;
+}
+}
+
+.no-extra-margin{
+padding: 0;
+margin: 0;
+display: grid;
+place-content: center;
+}
+
   .menu-item
  {
   display: flex;

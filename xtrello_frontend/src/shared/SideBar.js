@@ -1,21 +1,13 @@
-import React, { useState } from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { logout as Logout } from '../utils/Logout';
+import React, {  useState } from 'react'
+import { Link  } from 'react-router-dom'
 import ChatPanel from "./ChatPanel"
 
 export default function SideBar()
 {
-
-    const history = useHistory();
+    const [refresh, setrefresh] = useState(false);
     const [user,] = useState(JSON.parse(localStorage.getItem('auth')))
-
-
-    const logout = () =>
-    {
-        Logout(history)
-    }
     return (
-        <div>
+        <div className="app-sidebar">
             {
                 <aside className="main-sidebar sidebar-dark-primary elevation-4" style={{ backgroundColor: "#1E1E2D", borderRadius: '0px 15px 15px 0px', height: '107vh' }}>
                     <Link to="#" className="brand-link" data-widget="pushmenu">
@@ -36,13 +28,13 @@ export default function SideBar()
                                         <span className="brand-text font-weight-light" style={{ marginLeft: '3%', fontSize: '18px' }}>
                                             {user?.username}
                                         </span>
-                                        <i onClick={() => logout()} className="right fas fa-sign-out-alt" style={{ float: 'right', marginTop: '2%', fontSize: '20px', color: '#fa4c07' }} />
+                                        <i onClick={() => setrefresh(!refresh)} className="right fas fa-sync" style={{ float: 'right', marginTop: '2%', fontSize: '20px', color: '#fa4c07' }} />
                                     </Link>
                                 </li>
                             </ul>
                         </div>
 
-                        <ChatPanel />
+                        <ChatPanel refresh={refresh} />
 
                     </div>
                 </aside>

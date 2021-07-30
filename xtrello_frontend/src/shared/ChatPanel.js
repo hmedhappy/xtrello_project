@@ -8,7 +8,7 @@ import { Button } from '@material-ui/core';
 
 require('dotenv').config();
 
-export default function ChatPanel() {
+export default function ChatPanel({refresh}) {
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
   const [user] = useState(
@@ -16,11 +16,10 @@ export default function ChatPanel() {
   );
 
   useEffect(() => {
-    console.log('hello');
     fetch(`${process.env.NODE_ENV==="development"? process.env.REACT_APP_BACKEND_DEV : process.env.REACT_APP_BACKEND_PROD}/messages`)
       .then((response) => response.json())
       .then((data) => setMessages(data));
-  }, []);
+  }, [refresh]);
 
    
 
@@ -62,8 +61,8 @@ export default function ChatPanel() {
       <div
         className='mt-2 chat-messages'
         style={{ scrollBehavior: 'smooth',height:'67vh'}}>
-        {messages?.map((e) => (
-          <SingleMessage message={e} />
+        {messages?.map((e,index) => (
+          <SingleMessage key={index} message={e} />
         ))}
       </div>
       <div className='xchat d-flex'>
@@ -80,7 +79,7 @@ export default function ChatPanel() {
         />
         <Button type="submit" style={{color:'white !important',display:"none"}} >
         <i
-          className='x-chat-send'
+          className='x-chat-send far fa-paper-plane'
           style={{
             fontSize: '25px',
             textAlign: 'center',
@@ -88,12 +87,9 @@ export default function ChatPanel() {
             margin: 'auto',
             position: 'absolute',
             right: '15px',
-          }}
-          class='far fa-paper-plane'></i>
+          }}></i>
         </Button>
-       </form>
-        
-           
+       </form>  
       </div>
     </>
   );
